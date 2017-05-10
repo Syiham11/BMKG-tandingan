@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.abdymalikmulky.cuacaapp.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/colorPrimary"
+        android:id="@+id/relativeLayout"
+        android:padding="@dimen/main_padding">
+
+        <TextView
+            android:id="@+id/main_today"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Today, May 6"
+            android:gravity="center"
+            android:textSize="@dimen/main_today_text_size"
+            android:textColor="#fff"
+            />
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/main_margin_component"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/main_today_weath_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cloud"/>
+            <TextView
+                android:id="@+id/main_today_weath_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_text_dumm_light_rain"
+                android:textSize="@dimen/main_weather_label"
+                android:textColor="#fff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:orientation="vertical"
+            android:layout_alignTop="@+id/linearLayout"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/main_margin_component"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/main_today_degree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18°"
+                android:textSize="60sp"
+                android:textColor="#fff"/>
+
+            <TextView
+                android:id="@+id/main_today_degree_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="36sp"
+                android:text="12°"
+                android:textColor="#fff"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relativeLayout"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/main_list_weather"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+</RelativeLayout>
