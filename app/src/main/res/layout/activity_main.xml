@@ -37,7 +37,7 @@
                 android:id="@+id/main_today_weath_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/cloud"
+                android:src="@drawable/clear"
                 android:onClick="showWeatherState"/>
             <TextView
                 android:id="@+id/main_today_weath_text"

@@ -15,6 +15,9 @@ public class Cuaca {
     int pressure;
     double wind;
 
+    public Cuaca() {
+    }
+
     public Cuaca(String type, String day, int degree, int degree2, int humidity, int pressure, double wind) {
         this.type = type;
         this.day = day;

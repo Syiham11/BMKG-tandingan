@@ -4,7 +4,7 @@ package com.abdymalikmulky.bmkgtandingan.weather;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class List {
+public class WeatherList {
 
     @SerializedName("dt")
     @Expose
@@ -14,7 +14,7 @@ public class List {
     private Temp temp;
     @SerializedName("pressure")
     @Expose
-    private double pressure;
+    private float pressure;
     @SerializedName("humidity")
     @Expose
     private int humidity;
@@ -23,7 +23,7 @@ public class List {
     private java.util.List<Weather> weather = null;
     @SerializedName("speed")
     @Expose
-    private double speed;
+    private float speed;
     @SerializedName("deg")
     @Expose
     private int deg;
@@ -32,7 +32,7 @@ public class List {
     private int clouds;
     @SerializedName("rain")
     @Expose
-    private double rain;
+    private float rain;
 
     public int getDt() {
         return dt;
@@ -50,11 +50,11 @@ public class List {
         this.temp = temp;
     }
 
-    public double getPressure() {
+    public float getPressure() {
         return pressure;
     }
 
-    public void setPressure(double pressure) {
+    public void setPressure(float pressure) {
         this.pressure = pressure;
     }
 
@@ -74,11 +74,11 @@ public class List {
         this.weather = weather;
     }
 
-    public double getSpeed() {
+    public float getSpeed() {
         return speed;
     }
 
-    public void setSpeed(double speed) {
+    public void setSpeed(float speed) {
         this.speed = speed;
     }
 
@@ -98,17 +98,17 @@ public class List {
         this.clouds = clouds;
     }
 
-    public double getRain() {
+    public float getRain() {
         return rain;
     }
 
-    public void setRain(double rain) {
+    public void setRain(float rain) {
         this.rain = rain;
     }
 
     @Override
     public String toString() {
-        return "List{" +
+        return "WeatherList{" +
                 "dt=" + dt +
                 ", temp=" + temp +
                 ", pressure=" + pressure +

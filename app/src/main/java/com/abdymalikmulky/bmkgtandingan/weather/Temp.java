@@ -8,69 +8,80 @@ public class Temp {
 
     @SerializedName("day")
     @Expose
-    private double day;
+    private float day;
     @SerializedName("min")
     @Expose
-    private double min;
+    private float min;
     @SerializedName("max")
     @Expose
-    private double max;
+    private float max;
     @SerializedName("night")
     @Expose
-    private double night;
+    private float night;
     @SerializedName("eve")
     @Expose
-    private double eve;
+    private float eve;
     @SerializedName("morn")
     @Expose
-    private double morn;
+    private float morn;
 
-    public double getDay() {
+    public float getDay() {
         return day;
     }
 
-    public void setDay(double day) {
+    public void setDay(float day) {
         this.day = day;
     }
 
-    public double getMin() {
+    public float getMin() {
         return min;
     }
 
-    public void setMin(double min) {
+    public void setMin(float min) {
         this.min = min;
     }
 
-    public double getMax() {
+    public float getMax() {
         return max;
     }
 
-    public void setMax(double max) {
+    public void setMax(float max) {
         this.max = max;
     }
 
-    public double getNight() {
+    public float getNight() {
         return night;
     }
 
-    public void setNight(double night) {
+    public void setNight(float night) {
         this.night = night;
     }
 
-    public double getEve() {
+    public float getEve() {
         return eve;
     }
 
-    public void setEve(double eve) {
+    public void setEve(float eve) {
         this.eve = eve;
     }
 
-    public double getMorn() {
+    public float getMorn() {
         return morn;
     }
 
-    public void setMorn(double morn) {
+    public void setMorn(float morn) {
         this.morn = morn;
     }
 
+    @Override
+    public String toString() {
+        return "Temp{" +
+                "day=" + day +
+                ", min=" + min +
+                ", max=" + max +
+                ", night=" + night +
+                ", eve=" + eve +
+                ", morn=" + morn +
+                '}';
+    }
 }

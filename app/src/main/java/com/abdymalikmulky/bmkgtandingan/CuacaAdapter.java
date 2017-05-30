@@ -66,6 +66,13 @@ public class CuacaAdapter extends RecyclerView.Adapter<CuacaAdapter.ViewHolder> 
                 cuacaListener.onItemClick(cuaca);
             }
         });
+
+
+        if(cuaca.getType().equals("Rain")){
+            holder.ivWeatherIcon.setImageResource(R.drawable.rain);
+        }else {
+            holder.ivWeatherIcon.setImageResource(R.drawable.clear);
+        }
     }
 
     @Override
@@ -76,5 +83,9 @@ public class CuacaAdapter extends RecyclerView.Adapter<CuacaAdapter.ViewHolder> 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+    }
+    public void refreshData(ArrayList<Cuaca> listCuaca){
+        this.listCuaca = listCuaca;
+        notifyDataSetChanged();
     }
 }

@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    @GET("daily")
+    @GET("forecast/daily")
     Call<WeatherModel> getCuacaDaily(@Query("q") String q, @Query("mode") String mode, @Query("units") String unit,
                                      @Query("cnt") String count, @Query("appid") String appid);
 

@@ -16,14 +16,13 @@ public class WeatherModel {
     private String cod;
     @SerializedName("message")
     @Expose
-    private double message;
+    private float message;
     @SerializedName("cnt")
     @Expose
     private int cnt;
     @SerializedName("list")
     @Expose
-    private List<Weather> list;
-
+    private List<WeatherList> weatherList = null;
 
     public City getCity() {
         return city;
@@ -41,11 +40,11 @@ public class WeatherModel {
         this.cod = cod;
     }
 
-    public double getMessage() {
+    public float getMessage() {
         return message;
     }
 
-    public void setMessage(double message) {
+    public void setMessage(float message) {
         this.message = message;
     }
 
@@ -57,12 +56,12 @@ public class WeatherModel {
         this.cnt = cnt;
     }
 
-    public List<Weather> getList() {
-        return list;
+    public java.util.List<WeatherList> getList() {
+        return weatherList;
     }
 
-    public void setList(List<Weather> list) {
-        this.list = list;
+    public void setList(java.util.List<WeatherList> list) {
+        this.weatherList = list;
     }
 
     @Override
@@ -72,7 +71,7 @@ public class WeatherModel {
                 ", cod='" + cod + '\'' +
                 ", message=" + message +
                 ", cnt=" + cnt +
-                ", list=" + list +
+                ", weatherList=" + weatherList +
                 '}';
     }
 }

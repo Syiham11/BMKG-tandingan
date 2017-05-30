@@ -13,7 +13,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiHelper {
 
-    private static String BASE_URL = "http://api.openweathermap.org/data/2.5/forecast/";
+    private static String BASE_URL = "http://api.openweathermap.org/data/2.5/";
+
     static Retrofit retrofit = null;
 
     public static Retrofit client() {
@@ -21,8 +22,6 @@ public class ApiHelper {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
-
-
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)

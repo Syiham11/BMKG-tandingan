@@ -7,9 +7,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.abdymalikmulky.bmkgtandingan.weather.WeatherList;
 import com.abdymalikmulky.bmkgtandingan.weather.WeatherModel;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,10 +40,8 @@ public class MainActivity extends AppCompatActivity implements CuacaListener{
         rvListWeather.setLayoutManager(llm);
 
 
-        listCuaca = mockDataCuaca();
+        listCuaca = new ArrayList<>();
         cuacaAdapter = new CuacaAdapter(listCuaca, this);
-
-
         rvListWeather.setAdapter(cuacaAdapter);
 
         callApi();
@@ -75,14 +77,48 @@ public class MainActivity extends AppCompatActivity implements CuacaListener{
 
 
     private void callApi(){
+        final ArrayList<Cuaca> listCuaca = new ArrayList<>();
+
+
         ApiService service = ApiHelper.client().create(ApiService.class);
-        Call<WeatherModel> call = service.getCuacaDaily("Bandung", "json", "metric", "7", "352d697da89a30abe1f993dd58ad2e6b");
+        Call<WeatherModel> call = service.getCuacaDaily("Brazil", "json", "metric", "7", "352d697da89a30abe1f993dd58ad2e6b");
         call.enqueue(new Callback<WeatherModel>() {
             @Override
             public void onResponse(Call<WeatherModel> call, Response<WeatherModel> response) {
-                Log.d("DataApi-Cuaca", response.body().toString());
-//                Log.d("DataApi-Cuaca", response.body().getList().get(0).getMain());
-//                Log.d("DataApi-Cuaca-desc", response.body().getList().get(0).getDescription());
+                //hasil dari api
+                List<WeatherList> weatherLists = response.body().getList();
+                for (WeatherList wList : weatherLists) {
+                    Log.d("DataAPI-cuaca", wList.toString());
+
+                    //data tanggal
+                    long dateTime = wList.getDt();
+                    String date = tiemstampToDate(dateTime);
+
+                    //jenis cuaca
+                    String type = wList.getWeather().get(0).getMain();
+
+                    float degree = wList.getSpeed();
+                    float degree2 = wList.getDeg();
+
+                    int humidity = wList.getHumidity();
+                    float press = wList.getPressure();
+                    double wind = wList.getSpeed();
+
+
+                    Cuaca cuaca = new Cuaca();
+                    cuaca.setType(type);
+                    cuaca.setDay(date);
+                    cuaca.setDegree((int) degree);
+                    cuaca.setDegree2((int) degree2);
+                    cuaca.setHumidity(humidity);
+                    cuaca.setPressure((int) press);
+                    cuaca.setWind(wind);
+
+                    listCuaca.add(cuaca);
+                }
+
+                cuacaAdapter.refreshData(listCuaca);
+
             }
 
             @Override
@@ -92,4 +128,15 @@ public class MainActivity extends AppCompatActivity implements CuacaListener{
         });
     }
 
+    private String tiemstampToDate(long timestamp){
+        long timestampLong = timestamp*1000;
+        Date d = new Date(timestampLong);
+        Calendar c = Calendar.getInstance();
+        c.setTime(d);
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int date = c.get(Calendar.DATE);
+
+        return date+"-"+month+"-"+year;
+    }
 }
